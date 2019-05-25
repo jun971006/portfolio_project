@@ -1,12 +1,12 @@
 from flask import Blueprint, request, render_template, session, redirect, url_for
 from .db import connect_mongo, usersDAO
 
-db_conncection = connect_mongo.ConnectDB().db
+db_connection = connect_mongo.ConnectDB().db
 users = usersDAO.Users(db_connection)
 
 userAPI = Blueprint('userAPI', __name__, template_folder='templates')
 
-@userAPI.route('/singup', methods = ['GET', 'POST'])
+@userAPI.route('/signup', methods = ['GET', 'POST'])
 def signup():
 	if request.method == 'GET':
 		if not 'userEmail' in session:

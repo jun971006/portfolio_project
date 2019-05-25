@@ -1,6 +1,6 @@
 import pymongo
 
-class User():
+class Users():
 	def __init__(self, db):
 		self.users = pymongo.collection.Collection(db, 'Users')
 
