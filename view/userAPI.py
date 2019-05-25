@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, session, redirect, url_for
+from flask import Blueprint, request, render_template, session, redirect, url_for, flash
 from .db import connect_mongo, usersDAO
 
 db_connection = connect_mongo.ConnectDB().db
@@ -18,7 +18,7 @@ def signup():
 				session['userEmail'] = request.form['userEmail']
 				return render_template('welcome.html', info = session['userEmail'])
 			else:
-				#flash('Email is already Exists, try again with other Email.')
+				flash('Email is already Exists, try again with other Email.')
 				return redirect(url_for('userAPI.signup'))		
 		return render_template('welcome.html', info = session['userEmail'])
 @userAPI.route('/')
@@ -36,7 +36,7 @@ def login():
 				session['userEmail'] = request.form['userEmail']				
 				return render_template('welcome.html', info = session['userEmail'])
 			else:
-				#flash('Wrong ID or PW, You have to check your ID or PW')
+				flash('Wrong ID or PW, You have to check your ID or PW')
 				return redirect(url_for('userAPI.login'))
 @userAPI.route('/logout')
 def logout():
