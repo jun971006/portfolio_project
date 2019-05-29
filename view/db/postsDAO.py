@@ -1,21 +1,12 @@
 import pymongo
-<<<<<<< HEAD
 from bson.objectid import ObjectId
 
 class Posts():
 	def __init__(self, db):
 		self.posts = pymongo.collection.Collection(db, 'Posts')
 
-	def postDelete(self,postDict):
-=======
-from bson.objectid import objectid
-
-class Posts():
-	def __init__(self, db):
-		self.posts = pymongo.collection.Collectio(db, 'Posts')
-
 	def postCreate(self,postDict):
->>>>>>> master
+
 		try:
 			obj_id = self.posts.insert_one(postDict).inserted_id
 			return obj_id
@@ -40,8 +31,4 @@ class Posts():
 			 result = self.posts.find({})
 			 return result
 		except:
-<<<<<<< HEAD
 			return False
-=======
-			retrun False
->>>>>>> master
