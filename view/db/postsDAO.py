@@ -1,9 +1,9 @@
 import pymongo
-from bson.objectid import objectid
+from bson.objectid import ObjectId
 
 class Posts():
 	def __init__(self, db):
-		self.posts = pymongo.collection.Collectio(db, 'Posts')
+		self.posts = pymongo.collection.Collection(db, 'Posts')
 
 	def postDelete(self,postDict):
 		try:
@@ -30,4 +30,4 @@ class Posts():
 			 result = self.posts.find({})
 			 return result
 		except:
-			retrun False
+			return False
