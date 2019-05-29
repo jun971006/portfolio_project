@@ -1,0 +1,14 @@
+{% for tweet in post_all %}
+<div class="card" style="margin-bottom:30px">
+	<div class="card-body">
+		<blockquote class="blockquote">
+			<h5 class="card-title mb-0">{{tweet.postTitle}}</h5>
+			<footer class="blockquote-footer">{{tweet.postDate}}<cite title="Source Title">-{{tweet.postAuthor}}</cite></footer>
+		</blockquote>
+		<p class="card-text">{{tweet.postContent}}</p>
+		{% if info == tweet.postAuthor %}
+		{% include "removemodal.html" %}{% include "modifymodal.html" %}
+		{% endif %}
+	</div>
+</div>
+{% endfor %}
