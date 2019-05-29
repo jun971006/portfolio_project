@@ -14,7 +14,8 @@ def dict_merge(x, y):
 def post():
 	if request.method == "GET":
 		if "userEmail" in session:
-			return render_template("post.html", info=session["userEmail"], post_all=posts.getAllposts())
+			post_all = posts.getAllposts()
+			return render_template("post.html", info=session["userEmail"], post_all=post_all)
 		else:
 			flash('You have to login first!')
 			return redirect(url_for('userAPI.login'))
@@ -28,4 +29,21 @@ def post():
 			flash('You have to login first!')
 			return redirect(url_for('userAPI.login'))
 
+@postAPI.route("/post/update", methods=["POST"])
+def postUpdate():
+	if "userEmail" in session:
+		print(request.form.to_dict(flat=True)["obj_id"])
+		posts.postUpdate(request.form.to_dict(flat=True))
+		return redirect(url_for('postAPI.post'))
+	else:
+		flash('You have to logged in')
+		return redirect(url_for('userAPI.login'))
 
+@postAPI.route("/post/remove", methods=["POST"])
+def postRemove():
+	if "userEmail" in session:
+		posts.postDelete(request.form.to_dict(flat=True)["obj_id"])
+		return redirect(url_for('postAPI.post'))
+	else:
+		flash('You have to logged in')
+		return redirect(url_for('userAPI.login'))
