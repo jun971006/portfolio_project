@@ -1,0 +1,27 @@
+{% extends "base.html"%}
+{% block content %}
+<main role="main" class="container">
+	<div class="row">
+		<div class="col-md-8">
+		{% with post_all=post_all %}
+			{% include "tweet.html" %}
+		{% endwith %}
+		</div>
+		<div class="col-md-4">
+			<h3>tweet</h3>
+			<p class="text-muted"> What do you want to say?</p>
+			<form action="/post" method="POST">
+				<div class="form-group">
+					<label for="postTitle">Title</label>
+					<input type="text" name="postTitle" class="form-control" id="postTitle" placeholder="Enter title.">
+				</div>
+				<div class="form-group">
+					<label for="postContent">Content</label>
+					<textarea rows="10" name="postContent" class="form-control" id="postContent" placeholder="Enter Content."></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary float-right">tweet</button>
+			</form>
+		</div>
+	</div>
+</main>
+{% endblock content %}

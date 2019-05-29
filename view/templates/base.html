@@ -11,8 +11,15 @@
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
-    <div style="margin-top: 100px;">
-      {% block content %}{% endblock %}
+      {% if userEmail in session %}
+        {% include "navNotuser.html" %}
+      {% else %}
+        {% include "navUser.html" %}
+      {% endif %}
+
+
+      <div style="margin-top: 100px;">
+        {% block content %}{% endblock %}
     </div>
 
     <!-- Optional JavaScript -->
