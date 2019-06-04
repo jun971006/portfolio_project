@@ -10,14 +10,18 @@
 	    <p class="card-text">{{tweet.portTitle}}</p>
 	    <p class="card-text">{{tweet.portContent}}</p>
 	    <a href="#" class="btn btn-primary">Go somewhere</a>
+	    {% if info == 'admin@admin' %}
+			{% include "removemodal.html" %}{% include "modifymodal.html" %}
+		{% endif %}		
+
+{% endfor %}
 	  </div>
 	</div>
+	<div>
+		<a href="/port/create">포트폴리오 추가</a>
+	</div>
 </div>
-{% if info == 'admin' %}
-	{% include "removemodal.html" %}{% include "modifymodal.html" %}
-{% endif %}
-
-{% endfor %}	
+	
 
 <div>
 	<p>hello</p>
