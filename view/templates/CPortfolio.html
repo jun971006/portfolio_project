@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-
-<div class="col-md-4">
+<!-- <div class="container">
+<div class="col-md-4" style="display: block">
 	<h3>Create Portfolio</h3>
 	<p class="text-muted"> What do you want to say?</p>
-	<form action="/port" method="POST">
+	<form action="/port/create" method="POST">
 		<div class="form-group">
 			<label for="portTitle">Title</label>
 			<input type="text" name="portTitle" class="form-control" id="portTitle" placeholder="Enter title.">
@@ -16,15 +16,16 @@
 		<button type="submit" class="btn btn-primary float-right">Create</button>
 	</form>
 </div>
+</div> -->
 
 <div class="container">
 	<div style="display: block;">
 	  <h1 class="display-4">portfolio Register</h1>
 	  <hr class="my-4">
-	  <form action="/port" method="POST">
+	  <form action="/port/create" method="POST">
 		  <div class="form-group">
 		    <label for="portTitle">Portfolio Title</label>
-		    <input type="text" name="portTitle" class="form-control" id="portTitle" placeholder="Title of portfolio">
+		    <input type="text" name="portTitle" class="form-control" id="portTitle" placeholder="Enter Title">
 		  </div>
 		  <div class="form-group">
 		    <label for="portContent">Portfolio Content</label>
