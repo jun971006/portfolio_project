@@ -26,7 +26,8 @@ def signup():
 def login():
 	if request.method == 'GET':
 		if 'userEmail' in session:
-			return render_template('welcome.html', info = session['userEmail'])
+			# return render_template('welcome.html', info = session['userEmail'])
+			return render_template('portfolio.html')
 		return render_template('login.html')
 	elif request.method == 'POST':
 		if 'userEmail' in session:
@@ -34,7 +35,8 @@ def login():
 		else:
 			if users.userAuthentication(request.form.to_dict(flat='true')):
 				session['userEmail'] = request.form['userEmail']				
-				return render_template('welcome.html', info = session['userEmail'])
+				# return render_template('welcome.html', info = session['userEmail'])
+				return render_template('portfolio.html', info= session['userEmail'])
 			else:
 				flash('Wrong ID or PW, You have to check your ID or PW')
 				return redirect(url_for('userAPI.login'))

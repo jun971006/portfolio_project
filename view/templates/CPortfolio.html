@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="col-md-4">
+	<h3>Create Portfolio</h3>
+	<p class="text-muted"> What do you want to say?</p>
+	<form action="/port" method="POST">
+		<div class="form-group">
+			<label for="portTitle">Title</label>
+			<input type="text" name="portTitle" class="form-control" id="portTitle" placeholder="Enter title.">
+		</div>
+		<div class="form-group">
+			<label for="portContent">Content</label>
+			<textarea rows="10" name="portContent" class="form-control" id="portContent" placeholder="Enter Content."></textarea>
+		</div>
+		<button type="submit" class="btn btn-primary float-right">Create</button>
+	</form>
+</div>
+
+<div class="container">
+	<div style="display: block;">
+	  <h1 class="display-4">portfolio Register</h1>
+	  <hr class="my-4">
+	  <form action="/port" method="POST">
+		  <div class="form-group">
+		    <label for="portTitle">Portfolio Title</label>
+		    <input type="text" name="portTitle" class="form-control" id="portTitle" placeholder="Title of portfolio">
+		  </div>
+		  <div class="form-group">
+		    <label for="portContent">Portfolio Content</label>
+		    <textarea rows="10" name="portContent" class="form-control" id="portContent" placeholder="Enter Content."></textarea>
+		  </div>
+		  <button type="submit" class="btn btn-primary">Create</button>
+		</form>
+	</div>
+</div>
+{% endblock content %}
