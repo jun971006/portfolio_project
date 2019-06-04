@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+{% for tweet in port_all %}
+<div>
+	<div class="card" style="width: 18rem;">
+	  <img src="..." class="card-img-top" alt="...">
+	  <div class="card-body">
+	  	<!-- <h1 class="card-text">환영합니다. {{info}}</h1> -->
+	    <h5 class="card-title">Card title</h5>
+	    <p class="card-text">{{tweet.portTitle}}</p>
+	    <p class="card-text">{{tweet.portContent}}</p>
+	    <a href="#" class="btn btn-primary">Go somewhere</a>
+	  </div>
+	</div>
+</div>
+{% if info == 'admin' %}
+	{% include "removemodal.html" %}{% include "modifymodal.html" %}
+{% endif %}
+
+{% endfor %}	
+
+<div>
+	<p>hello</p>
+</div>
+{% endblock content %}
