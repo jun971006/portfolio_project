@@ -26,8 +26,8 @@ def signup():
 def login():
 	if request.method == 'GET':
 		if 'userEmail' in session:
-			# return render_template('welcome.html', info = session['userEmail'])
-			return render_template('portfolio.html')
+			return render_template('welcome.html', info = session['userEmail'])
+			# return render_template('portfolio.html')
 		return render_template('login.html')
 	elif request.method == 'POST':
 		if 'userEmail' in session:

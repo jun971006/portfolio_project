@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
+<div style="display:block; marginRight:auto; marginLeft:auto; maxWidth:1400px, paddingTop:70px">
 {% for tweet in port_all %}
-<div>
-	<div class="card" style="width: 18rem;">
+
+	<div class="card shadow-lg" style="width: 18rem; height: auto; margin-top: 1rem;, margin-right:10px; margin-left: :10px; float:left" >
 	  <img src="..." class="card-img-top" alt="...">
 	  <div class="card-body">
 	  	<!-- <h1 class="card-text">환영합니다. {{info}}</h1> -->
@@ -10,20 +11,20 @@
 	    <p class="card-text">{{tweet.portTitle}}</p>
 	    <p class="card-text">{{tweet.portContent}}</p>
 	    <a href="#" class="btn btn-primary">Go somewhere</a>
+	    <div style="margin-top: 2rem;">
 	    {% if info == 'admin@admin' %}
 			{% include "removemodal.html" %}{% include "modifymodal.html" %}
 		{% endif %}		
+		</div>
 
-{% endfor %}
 	  </div>
 	</div>
-	<div>
-		<a href="/port/create">포트폴리오 추가</a>
-	</div>
-</div>
-	
 
-<div>
-	<p>hello</p>
+{% endfor %}
 </div>
+
+<div style="float: left;">
+	<a href="/port/create" class="btn btn-primary">포트폴리오 추가</a>
+</div>
+
 {% endblock content %}

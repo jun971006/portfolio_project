@@ -3,7 +3,7 @@ from bson.objectid import ObjectId
 
 class Ports():
 	def __init__(self, db):
-		self.ports = pymongo.collection.Collection(db, 'ports')
+		self.ports = pymongo.collection.Collection(db, 'Ports')
 
 	def portCreate(self,portDict):
 
