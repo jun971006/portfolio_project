@@ -15,9 +15,11 @@ def dict_merge(x, y):
 def port():
 	# if request.method == "GET":
 	# 	# if "userEmail" in session:
-	# port_all = ports.getAllports()
-	port_all = ports.findOnePort()
-	return render_template("portfolio.html", info=session["userEmail"], port_all=port_all)
+	port_all = ports.getAllports()
+	if "userEmail" in session:
+		return render_template("portfolio.html", info=session["userEmail"], port_all=port_all)
+	else:
+		return render_template("portfolio.html", port_all=port_all)
 	# 	# else:
 	# 	# 	flash('You have to login first!')
 	# 	# 	return redirect(url_for('userAPI.login'))
@@ -32,14 +34,15 @@ def port():
 	# 			flash('You have to login first!')
 	# 			return redirect(url_for('userAPI.login'))	
 	# 	else:
-	# 		flash('You have to login first!')
+	# 		flash('Yo	u have to login first!')
 	# 		return redirect(url_for('userAPI.login'))
 
 
-# @portAPI.route('/port/<int:index>',  methods=["GET", "POST"])
-# def portView(index):
-# 	if request.method == "GET":
-# 		result = ports.
+@portAPI.route('/port/<int:index>',  methods=["GET", "POST"])
+def portView(index):
+	if request.method == "GET":
+		result = ports.findOnePort(index)
+		return render_template("")
 
 
 
@@ -107,11 +110,6 @@ def portRemove():
 	else:
 			flash('You have to admin logged in')
 			return redirect(url_for('userAPI.login'))
-
-@portAPI.route("/port/readmore", methos= ["GET", "POST"])
-def portReadmore():
-	if "userEmail" in session
-
 
 # TODO : portsDAO에서 특정 id값 portfolio가져올 api 구현해야함... 이걸 db _id로 사용할지 따로 indexing할지 생각...
 # @portAPI.route("/port/:id", methods=["GET", "POST"])
