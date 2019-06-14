@@ -1,10 +1,10 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-outline-dark btn-sm float-right" style="margin-right:5px;" data-toggle="modal" data-target="#modifyModal">
+<button type="button" class="btn btn-outline-dark btn-sm float-right" style="margin-right:5px;" data-toggle="modal" data-target="#modifyModal{{tweet._id}}">
 modify
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="modifyModal" tabindex="-1" role="dialog" aria-labelledby="modifyModalLabel" aria-hidden="true">
+<div class="modal fade" id="modifyModal{{tweet._id}}" tabindex="-1" role="dialog" aria-labelledby="modifyModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       
@@ -20,6 +20,7 @@ modify
           <div class="form-group">
             <label for="portTitle">Title</label>
             <input type="text" name="portTitle" class="form-control" id="portTitle" placeholder="Enter title." value="{{tweet.portTitle}}">
+            <input type="text" name="portTitle" class="form-control" id="portTitle" placeholder="Enter title." value="{{tweet._id}}">
           </div>
           <div class="form-group">
             <label for="portContent">Content</label>

@@ -16,7 +16,8 @@ def port():
 	# if request.method == "GET":
 	# 	# if "userEmail" in session:
 	port_all = ports.getAllports()
-	return render_template("portfolio.html", info=session["userEmail"], port_all=port_all)
+	one = ports.findOnePort()
+	return render_template("portfolio.html", info=session["userEmail"], port_all=port_all, one=one)
 	# 	# else:
 	# 	# 	flash('You have to login first!')
 	# 	# 	return redirect(url_for('userAPI.login'))
@@ -36,6 +37,8 @@ def port():
 
 @portAPI.route("/port/create", methods=["GET", "POST"])
 def portCreate():
+
+
 	if request.method == "GET":
 		if "userEmail" in session:
 			if "admin@admin" in session["userEmail"]:
@@ -52,6 +55,8 @@ def portCreate():
 		if "userEmail" in session:
 			if "admin@admin" in session["userEmail"]:
 				now = time.strftime("%Y-%m-%d %H:%M")
+				
+
 				obj_id = ports.portCreate(dict_merge({"portAuthor":session["userEmail"],"portDate":now}, request.form.to_dict(flat="true")))
 				return redirect(url_for('portAPI.port'))
 
@@ -66,18 +71,31 @@ def portCreate():
 @portAPI.route("/port/update", methods=["POST"])
 def portUpdate():
 	if "userEmail" in session:
-		print(request.form.to_dict(flat=True)["obj_id"])
-		ports.portUpdate(request.form.to_dict(flat=True))
-		return redirect(url_for('portAPI.port'))
+		if "admin@admin" in session["userEmail"]:
+			print(request.form.to_dict(flat=True)["obj_id"])
+			ports.portUpdate(request.form.to_dict(flat=True))
+			return redirect(url_for('portAPI.port'))
+		else:
+			flash('You have to admin logged in')
+			return redirect(url_for('userAPI.login'))
 	else:
-		flash('You have to logged in')
-		return redirect(url_for('userAPI.login'))
+			flash('You have to admin logged in')
+			return redirect(url_for('userAPI.login'))
 
 @portAPI.route("/port/remove", methods=["POST"])
 def portRemove():
 	if "userEmail" in session:
-		ports.portDelete(request.form.to_dict(flat=True)["obj_id"])
-		return redirect(url_for('portAPI.port'))
+		if "admin@admin" in session["userEmail"]:
+			ports.portDelete(request.form.to_dict(flat=True)["obj_id"])
+			return redirect(url_for('portAPI.port'))
+		else:
+			flash('You have to admin logged in')
+			return redirect(url_for('userAPI.login'))
 	else:
-		flash('You have to logged in')
-		return redirect(url_for('userAPI.login'))
+			flash('You have to admin logged in')
+			return redirect(url_for('userAPI.login'))
+
+# TODO : portsDAO에서 특정 id값 portfolio가져올 api 구현해야함... 이걸 db _id로 사용할지 따로 indexing할지 생각...
+# @portAPI.route("/port/:id", methods=["GET", "POST"])
+# def portView():
+# 	

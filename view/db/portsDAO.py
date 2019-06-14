@@ -19,6 +19,7 @@ class Ports():
 			return True
 		except:
 			return False
+
 	def portUpdate(self,portDict):
 		self.ports.find_and_modify(
 			{"_id": ObjectId(portDict["obj_id"])},
@@ -30,5 +31,14 @@ class Ports():
 		try:
 			 result = self.ports.find({})
 			 return result
+		except:
+			return False
+
+	#TODO
+	# port 디비에서 특정 id한개에 해당하는 portfolio만 가져온다.
+	def findOnePort(self):
+		try:
+			result = self.ports.find_one()
+			return result
 		except:
 			return False

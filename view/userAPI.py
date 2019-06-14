@@ -36,7 +36,8 @@ def login():
 			if users.userAuthentication(request.form.to_dict(flat='true')):
 				session['userEmail'] = request.form['userEmail']				
 				# return render_template('welcome.html', info = session['userEmail'])
-				return render_template('portfolio.html', info= session['userEmail'])
+				#return render_template('portfolio.html', info= session['userEmail'])
+				return redirect(url_for('portAPI.port'))
 			else:
 				flash('Wrong ID or PW, You have to check your ID or PW')
 				return redirect(url_for('userAPI.login'))
