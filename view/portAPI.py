@@ -15,9 +15,9 @@ def dict_merge(x, y):
 def port():
 	# if request.method == "GET":
 	# 	# if "userEmail" in session:
-	port_all = ports.getAllports()
-	one = ports.findOnePort()
-	return render_template("portfolio.html", info=session["userEmail"], port_all=port_all, one=one)
+	# port_all = ports.getAllports()
+	port_all = ports.findOnePort()
+	return render_template("portfolio.html", info=session["userEmail"], port_all=port_all)
 	# 	# else:
 	# 	# 	flash('You have to login first!')
 	# 	# 	return redirect(url_for('userAPI.login'))
@@ -35,10 +35,16 @@ def port():
 	# 		flash('You have to login first!')
 	# 		return redirect(url_for('userAPI.login'))
 
+
+# @portAPI.route('/port/<int:index>',  methods=["GET", "POST"])
+# def portView(index):
+# 	if request.method == "GET":
+# 		result = ports.
+
+
+
 @portAPI.route("/port/create", methods=["GET", "POST"])
 def portCreate():
-
-
 	if request.method == "GET":
 		if "userEmail" in session:
 			if "admin@admin" in session["userEmail"]:
@@ -54,10 +60,17 @@ def portCreate():
 	if request.method == "POST":
 		if "userEmail" in session:
 			if "admin@admin" in session["userEmail"]:
+				find = list(ports.getAllports())
+				if not find:
+					index = 1
+				
+				else:
+					index = find[-1]["index"] + 1
+				
 				now = time.strftime("%Y-%m-%d %H:%M")
 				
 
-				obj_id = ports.portCreate(dict_merge({"portAuthor":session["userEmail"],"portDate":now}, request.form.to_dict(flat="true")))
+				obj_id = ports.portCreate(dict_merge({"index":index,"portAuthor":session["userEmail"],"portDate":now}, request.form.to_dict(flat="true")))
 				return redirect(url_for('portAPI.port'))
 
 			else:
