@@ -1,9 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container">
-	<div style="display: block;">
-	  <h1 class="display-4">Read More {{tweet.portTitle}}</h1>
+<div class="jumbotron text-center" style ="margin-bottom:0">
+	<h1> TITLE HEADING </h1>
+	<h5> Title description, sep 2, 2017 </h5>
+</div>
+<div class ="container-fluid">
+	<div class = "row">
+		  <div>
+		  	<img src="static/img/image.png"  class = "img-fluid" alt ="이미지 설명">
+		  </div>
+	</div>
+	<div class = "row">
+		<p class = "text-break">portfolio content</p>
+	</div>
+	<div class = "row">
+		 <!--댓글창-->
+		<a style="display:scroll;position:fixed;bottom:10px;right:10px;" href="#" title="맨 위로">맨 위로 </a> 
 	</div>
 </div>
+
 {% endblock content %}
