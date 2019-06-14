@@ -1,30 +1,40 @@
 {% extends "base.html" %}
 {% block content %}
-<div style="display:block; marginRight:auto; marginLeft:auto; maxWidth:1400px, paddingTop:70px">
+<!-- <div style="display:block; margin-right: :auto; margin-left:auto; max-width: :1400px, padding-top:70px"> -->
+<div style="display:table;margin-right:auto; margin-left:auto; max-width:1400px; padding-top:70px">
 {% for tweet in port_all %}
 
-	<div class="card shadow-lg" style="width: 18rem; height: auto; margin-top: 1rem;, margin-right:10px; margin-left: :10px; float:left" >
-	  <img src="..." class="card-img-top" alt="...">
+	<div class="card shadow-lg" style="width: 18rem; margin:0.7rem; height: auto; width: 300px; margin-top: : 1rem; margin-right:20px;margin-left:20px; text-align:center; float:left;" >
+	  <img src="static/img/image.png" class="card-img-top" alt="...">
 	  <div class="card-body">
 	  	<!-- <h1 class="card-text">환영합니다. {{info}}</h1> -->
 	    <h5 class="card-title">Card title</h5>
-	    <p class="card-text">{{tweet.portTitle}}</p>
-	    <p class="card-text">{{tweet.portContent}}</p>
-	    <a href="#" class="btn btn-primary">Go somewhere</a>
-	    <div style="margin-top: 2rem;">
+	    <!-- <p class="card-text">{{tweet.portTitle}}</p> -->
+	    
+	    <blockquote class="blockquote">
+			<h5 class="card-title mb-0">{{tweet.portTitle}}</h5>
+			<footer class="blockquote-footer">{{tweet.portDate}}<br/><cite title="Source Title">-{{tweet.portAuthor}}</cite></footer>
+		</blockquote>
+		<p class="card-text">{{tweet.portContent}}</p>
+	    <a href="#" style="margin-top: 2rem;" class="btn btn-primary">Go somewhere</a>
+	    <div style="margin-top: 2rem; float: left;">
 	    {% if info == 'admin@admin' %}
 			{% include "removemodal.html" %}{% include "modifymodal.html" %}
 		{% endif %}		
-		</div>
+		</div> 
 
 	  </div>
 	</div>
 
 {% endfor %}
 </div>
-
+{% for tw in one %}
+{{tw._id}}
+{% endfor %}
+<br />
+{% if info == 'admin@admin' %}
 <div style="float: left;">
-	<a href="/port/create" class="btn btn-primary">포트폴리오 추가</a>
+	<a href="/port/create" class="btn btn-primary" style="float: left;">포트폴리오 추가</a>
 </div>
-
+{% endif %}	
 {% endblock content %}
