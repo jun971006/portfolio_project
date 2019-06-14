@@ -95,6 +95,11 @@ def portRemove():
 			flash('You have to admin logged in')
 			return redirect(url_for('userAPI.login'))
 
+@portAPI.route("/port/readmore", methos= ["GET", "POST"])
+def portReadmore():
+	if "userEmail" in session
+
+
 # TODO : portsDAO에서 특정 id값 portfolio가져올 api 구현해야함... 이걸 db _id로 사용할지 따로 indexing할지 생각...
 # @portAPI.route("/port/:id", methods=["GET", "POST"])
 # def portView():
