@@ -1,10 +1,10 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-sm text-align:center" style="margin-right:5px;" data-toggle="modal" data-target="#modifyModal{{tweet._id}}">
+<button type="button" class="btn btn-primary btn-sm text-align:center" style="margin-right:5px;" data-toggle="modal" data-target="#modifyModal{{port.index}}">
 modify
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="modifyModal{{tweet._id}}" tabindex="-1" role="dialog" aria-labelledby="modifyModalLabel" aria-hidden="true">
+<div class="modal fade" id="modifyModal{{port.index}}" tabindex="-1" role="dialog" aria-labelledby="modifyModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       
@@ -18,17 +18,16 @@ modify
       <div class="modal-body">
         <form action="/port/update" method="POST">
           <div class="form-group">
-            <label for="portTitle">Title</label>
-            <input type="text" name="portTitle" class="form-control" id="portTitle" placeholder="Enter title." value="{{tweet.portTitle}}">
-            <input type="text" name="portTitle" class="form-control" id="portTitle" placeholder="Enter title." value="{{tweet._id}}">
+            <label for="portTitle" class="mr-auto">Title</label>
+            <input type="text" name="portTitle" class="form-control" id="portTitle" placeholder="Enter title." value="{{port.portTitle}}">
           </div>
           <div class="form-group">
             <label for="portContent">Content</label>
-            <textarea rows="10" name="portContent" class="form-control" id="portContent" placeholder="Enter Content.">{{tweet.portContent}}</textarea>
+            <textarea rows="10" name="portContent" class="form-control" id="portContent" placeholder="Enter Content.">{{port.portContent}}</textarea>
           </div>
       </div>
 
-      <input type="hidden" name="obj_id" value="{{tweet._id}}">
+      <input type="hidden" name="obj_id" value="{{port._id}}">
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save changes</button>

@@ -1,9 +1,10 @@
 from flask import Blueprint, flash, session, render_template, jsonify, request, redirect, url_for
-from .db import connect_mongo, portsDAO
+from .db import connect_mongo, portsDAO, commentsDAO
 import time
 
 db_connection = connect_mongo.ConnectDB().db
 ports = portsDAO.Ports(db_connection)
+comments = commentsDAO.Comments(db_connection)
 
 portAPI = Blueprint('portAPI', __name__, template_folder='templates')
 
@@ -40,9 +41,12 @@ def port():
 
 @portAPI.route('/port/<int:index>',  methods=["GET", "POST"])
 def portView(index):
-	if request.method == "GET":
-		result = ports.findOnePort(index)
-		return render_template("readMore.html", Index=index, port = result)
+	# if request.method == "GET":
+	comment_all = comments.getAllcomments()
+	result = ports.findOnePort(index)
+	print(comment_all)
+	return render_template("readMore.html", Index=index, port=result, comments=comment_all)
+	# return render_template("readMore.html")
 
 
 

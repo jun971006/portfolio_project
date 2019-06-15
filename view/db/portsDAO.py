@@ -39,7 +39,7 @@ class Ports():
 	def findOnePort(self, Index):
 		try:
 			# result = self.ports.find({}).sort({"_id:-1"}).limit(1)
-			result = self.ports.find_one({"index : Index"})
+			result = self.ports.find_one({"index" : Index})
 			return result
 		except:
 			return False
