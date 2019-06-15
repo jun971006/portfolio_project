@@ -1,14 +1,14 @@
-{% for tweet in post_all %}
+{% for tweet in comments %}
 <div class="card" style="margin-bottom:30px">
 	<div class="card-body">
 		<blockquote class="blockquote">
-			<h5 class="card-title mb-0">{{tweet.postTitle}}</h5>
-			<footer class="blockquote-footer">{{tweet.postDate}}<cite title="Source Title">-{{tweet.postAuthor}}</cite></footer>
+			<h5 class="card-title mb-0">{{tweet.commentTitle}}</h5>
+			<footer class="blockquote-footer">{{tweet.commentDate}}<cite title="Source Title">-{{tweet.commentPW}}</cite></footer>
 		</blockquote>
-		<p class="card-text">{{tweet.postContent}}</p>
-		{% if info == tweet.postAuthor %}
+		<p class="card-text">{{tweet.commentContent}}</p>
+		<!-- {% if info == tweet.postAuthor %}
 		{% include "removemodal.html" %}{% include "modifymodal.html" %}
-		{% endif %}
+		{% endif %} -->
 	</div>
 </div>
 {% endfor %}
