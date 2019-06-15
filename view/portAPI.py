@@ -42,11 +42,17 @@ def port():
 @portAPI.route('/port/<int:index>',  methods=["GET", "POST"])
 def portView(index):
 	# if request.method == "GET":
-	comment_all = comments.getAllcomments()
-	result = ports.findOnePort(index)
-	print(comment_all)
-	return render_template("readMore.html", Index=index, port=result, comments=comment_all)
-	# return render_template("readMore.html")
+	if "userEmail" in session:
+		comment_all = comments.getAllcomments(index)
+		result = ports.findOnePort(index)
+		print(comment_all)
+		return render_template("readMore.html", Index=index, info=session["userEmail"], port=result, comments=comment_all)
+	
+	else:
+		comment_all = comments.getAllcomments(index)
+		result = ports.findOnePort(index)
+		print(comment_all)
+		return render_template("readMore.html", Index=index, port=result, comments=comment_all)
 
 
 
