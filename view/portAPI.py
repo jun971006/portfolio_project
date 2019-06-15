@@ -42,7 +42,7 @@ def port():
 def portView(index):
 	if request.method == "GET":
 		result = ports.findOnePort(index)
-		return render_template("")
+		return render_template("readMore.html", Index=index, port = result)
 
 
 
