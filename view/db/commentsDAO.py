@@ -27,9 +27,10 @@ class Comments():
 			upsert=False
 			)
 		return True
-	def getAllcomments(self):
+	def getAllcomments(self, Index):
+		index = str(Index)
 		try:
-			 result = self.comments.find({})
+			 result = self.comments.find({"commentIndex" : index})
 			 return result
 		except:
 			return False

@@ -6,9 +6,11 @@
 			<footer class="blockquote-footer">{{tweet.commentDate}}<cite title="Source Title">-{{tweet.commentPW}}</cite></footer>
 		</blockquote>
 		<p class="card-text">{{tweet.commentContent}}</p>
-		<!-- {% if info == tweet.postAuthor %}
-		{% include "removemodal.html" %}{% include "modifymodal.html" %}
-		{% endif %} -->
+		{% if info %}
+			{% if info == "admin@admin" %}
+				{% include "removemodal.html" %}{% include "modifymodal.html" %}
+			{% endif %}
+		{% endif %}
 	</div>
 </div>
-{% endfor %}
+{% endfor %}  
