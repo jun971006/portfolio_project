@@ -3,15 +3,14 @@
 <!-- <div style="display:block; margin-right: :auto; margin-left:auto; max-width: :1400px, padding-top:70px"> -->
 <div style="display:table;margin-right:auto; margin-left:auto; max-width:1400px; padding-top:70px">
 {% for port in port_all %}
-	<div class="card shadow-lg" style="width: 18rem; margin:0.7rem; max-height: 700px; width: 300px; margin-top: : 1rem; margin-right:10px;margin-left:10px; text-align:center; float:left;" >
-	  <a href="/port/{{port.index}}"><img src="static/img/image.png" class="card-img-top  img-thumbnail" alt="..."></a>
+	<div class="card shadow-lg" style="width: 18rem; margin:0.7rem; max-height: 750px; width: 300px; margin-top: : 1rem; margin-right:10px;margin-left:10px; text-align:center; float:left;" >
+	  <a href="/port/{{port.index}}"><img src={{port.imagepath}} class="card-img-top  img-thumbnail" alt="..."></a>
 	  <div class="card-body">
-	  	<h1 class="card-text">환영합니다. {{info}}</h1>
-	    <h5 class="card-title">{{port.portTitle}}</h5>
+	    <h1 class="card-title">Title : {{port.portTitle}}</h5>
 	    
 	    
 	    <blockquote class="blockquote">
-			<footer class="blockquote-footer">{{port.portDate}}<br/><cite title="Source Title">-{{port.portAuthor}}</cite></footer>
+			<footer class="blockquote-footer">{{port.portDate}}<br/><cite title="Source Title">- {{port.portAuthor}}</cite></footer>
 		</blockquote>
 		<p class="card-text">{{port.portContent}}</p>
 	    <a href="/port/{{port.index}}" style="margin-top: 2rem;" class="btn btn-secondary">View More</a>

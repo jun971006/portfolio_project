@@ -27,7 +27,7 @@ def home():
 		return render_template("Mypage.html", info = session["userEmail"])
 
 	else:
-		return render_template("Mypage.html")
+		return redirect(url_for("portAPI.port"))
 
 
 

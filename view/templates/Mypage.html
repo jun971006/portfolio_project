@@ -4,7 +4,9 @@
 <div class="w3-container" style="padding:80px 16px" id="contact">
     <h3 class="w3-center" style="margin-top:-30px;">MY PAGE</h3>
     <p class="w3-center w3-large">회원가입 정보를 확인하세요!</p>
-
+    {% if info == 'admin@admin' %}
+    <p class="w3-center w3-large" style="color: blue">환영합니다 어드민님!</p>
+    {% endif %}
     <div class="card shadow-lg" style="margin:40px;padding:10px;max-width:1000px;display:table;margin-right:auto;margin-left:auto;">
     <div style="margin-top : 48px; text-align:center;">
     <img src="..." class="w3-image w3-center" style= "height: 150px; width:150px; border-radius:50%;" alt=""/>
@@ -31,7 +33,10 @@
         
 </div>
 {% else %}
-
+<div class="w3-container" style="padding:80px 16px" id="contact">
+    <h3 class="w3-center" style="margin-top:-30px;">MY PAGE</h3>
+    <p class="w3-center w3-large">회원가입을 하시면 정보를 확인할 수 있습니다!</p>
+</div>
 
 {% endif %}
 
