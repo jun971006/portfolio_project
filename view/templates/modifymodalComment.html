@@ -1,0 +1,45 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-sm text-align:center" style="margin-right:5px;" data-toggle="modal" data-target="#modifyModalComment{{tweet._id}}">
+modify
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modifyModalComment{{tweet._id}}" tabindex="-1" role="dialog" aria-labelledby="modifyModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="modifyModalLabel">Modify</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form action="/comment/update" method="POST">
+          <div class="form-group">
+            <label for="commentTitle" class="mr-auto">Title</label>
+            <input type="text" name="commentTitle" class="form-control" id="commentTitle" placeholder="Enter title." value="{{tweet.commentTitle}}">
+          </div>
+          <div class="form-group">
+            <label for="commentContent">Content</label>
+            <textarea rows="10" name="commentContent" class="form-control" id="commentContent" placeholder="Enter Content.">{{tweet.commentContent}}</textarea>
+          </div>
+          {% if not info %}
+            <div class="form-group">
+              <label for="commentPW" class="mr-auto">Password</label>
+              <input type="text" name="commentPW" class="form-control" id="commentPW" placeholder="Enter Password.">
+            </div>
+          {% endif %}
+      </div>
+
+      <input type="hidden" name="obj_id" value="{{tweet._id}}">
+      <input type="hidden" name="commentIndex" value="{{tweet.commentIndex}}">
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        </form>       
+      </div>
+    </div>
+  </div>
+</div>

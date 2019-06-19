@@ -27,7 +27,7 @@
 				<div class="form-group">
 					<label for="commentTitle">Title</label>
 					{% if info %}
-					<input type="hidden" name="commentAuthor" class="form-control" id="form-control" value={{info}}>
+					<input type="text" name="commentAuthor" class="form-control" id="form-control" value={{info}}>
 					{% endif %}
 					<input type="hidden" name="commentIndex" class="form-control" id="commentIndex" value={{more.index}}>
 					<input type="text" name="commentTitle" class="form-control" id="commentTitle" placeholder="Enter title.">
@@ -39,7 +39,7 @@
 				{% if not info %}
 				<div class="form-group">
 					<label for="commentPW">Password</label>
-					<input type="password" name="commentPW" class="form-group" id="commentPW" placeholder="Enter Password">
+					<input type="text" name="commentPW" class="form-group" id="commentPW" placeholder="Enter Password">
 				</div>
 				{% endif %}
 				<button type="submit" class="btn btn-primary float-right">tweet</button>
