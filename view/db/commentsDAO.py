@@ -23,7 +23,7 @@ class Comments():
 	def commentUpdate(self,commentDict):
 		self.comments.find_and_modify(
 			{"_id": ObjectId(commentDict["obj_id"])},
-			{"$set":{"portTitle":commentDict["portTitle"],"portContent":commentDict["portContent"]}},
+			{"$set":{"commentTitle":commentDict["commentTitle"],"commentContent":commentDict["commentContent"]}},
 			upsert=False
 			)
 		return True
@@ -32,5 +32,12 @@ class Comments():
 		try:
 			 result = self.comments.find({"commentIndex" : index})
 			 return result
+		except:
+			return False
+
+	def getOnecomment(self, obj_id):
+		try:
+			result = self.comments.find_one({"_id" : ObjectId(obj_id)})
+			return result
 		except:
 			return False

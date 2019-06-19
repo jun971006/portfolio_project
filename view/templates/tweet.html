@@ -3,13 +3,23 @@
 	<div class="card-body">
 		<blockquote class="blockquote">
 			<h5 class="card-title mb-0">{{tweet.commentTitle}}</h5>
-			<footer class="blockquote-footer">{{tweet.commentDate}}<cite title="Source Title">-{{tweet.commentPW}}</cite></footer>
+			<footer class="blockquote-footer">{{tweet.commentDate}}<cite title="Source Title"></cite></footer>
 		</blockquote>
 		<p class="card-text">{{tweet.commentContent}}</p>
+		{% if tweet.commentAuthor %}
+			<p class="card-text">Author : {{tweet.commentAuthor}}</p>
+		{% endif %}
 		{% if info %}
 			{% if info == "admin@admin" %}
-				{% include "removemodal.html" %}{% include "modifymodal.html" %}
+				{% include "removemodalComment.html" %}{% include "modifymodalComment.html" %}
+			
+			{% elif info == tweet.commentAuthor %}
+				{% include "removemodalComment.html" %}{% include "modifymodalComment.html" %}
+
+			
 			{% endif %}
+		{% else %}
+				{% include "removemodalComment.html" %}{% include "modifymodalComment.html" %}	
 		{% endif %}
 	</div>
 </div>
