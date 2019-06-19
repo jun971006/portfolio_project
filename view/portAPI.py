@@ -76,6 +76,10 @@ def portCreate():
 			if "admin@admin" in session["userEmail"]:
 				f = request.files['portImage']
 				f.save("./static/img/" + secure_filename(f.filename))
+				image = secure_filename(f.filename)
+				print(image)
+				imagepath = "../../static/img/" + image
+				print(imagepath)
 				find = list(ports.getAllports())
 				if not find:
 					index = 1
@@ -86,7 +90,7 @@ def portCreate():
 				now = time.strftime("%Y-%m-%d %H:%M")
 				
 
-				obj_id = ports.portCreate(dict_merge({"index":index,"portAuthor":session["userEmail"],"portDate":now}, request.form.to_dict(flat="true")))
+				obj_id = ports.portCreate(dict_merge({"index":index,"portAuthor":session["userEmail"],"portDate":now, "imagepath":imagepath}, request.form.to_dict(flat="true")))
 				return redirect(url_for('portAPI.port'))
 
 			else:

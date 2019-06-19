@@ -7,7 +7,7 @@
 </div>
 <div class ="container-fluid">
 	<div class = "row center-block">
-		<img src="../../static/img/image.png" class="img-resposive rounded img-fluid mx-auto d-block" alt ="">  
+		<img src={{more.imagepath}} class="img-resposive rounded img-fluid mx-auto d-block" alt ="">  
 	</div>
 	<div class = "row">
 		<p class = "text-break">{{more.portContent}}</p><br/>
@@ -27,7 +27,7 @@
 				<div class="form-group">
 					<label for="commentTitle">Title</label>
 					{% if info %}
-					<input type="text" name="commentAuthor" class="form-control" id="form-control" value={{info}}>
+					<input type="hidden" name="commentAuthor" class="form-control" id="form-control" value={{info}}>
 					{% endif %}
 					<input type="hidden" name="commentIndex" class="form-control" id="commentIndex" value={{more.index}}>
 					<input type="text" name="commentTitle" class="form-control" id="commentTitle" placeholder="Enter title.">
