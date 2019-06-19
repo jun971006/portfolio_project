@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 {% if info %} 
+{% with my=mypage %}
 <div class="w3-container" style="padding:80px 16px" id="contact">
     <h3 class="w3-center" style="margin-top:-30px;">MY PAGE</h3>
     <p class="w3-center w3-large">회원가입 정보를 확인하세요!</p>
@@ -9,29 +10,28 @@
     {% endif %}
     <div class="card shadow-lg" style="margin:40px;padding:10px;max-width:1000px;display:table;margin-right:auto;margin-left:auto;">
     <div style="margin-top : 48px; text-align:center;">
-    <img src="..." class="w3-image w3-center" style= "height: 150px; width:150px; border-radius:50%;" alt=""/>
+    <img src={{my.myImagepath}} class="w3-image w3-center" style= "height: 150px; width:150px; border-radius:50%;" alt=""/>
     </div>
     <div style="margin-top : 40px;text-align:left; display:table;margin-right:auto;margin-left:auto;">
     <br/>
-    <p><i class="fas fa-user fa-fw w3-xlarge w3-center"></i> USER NAME: {{info}}</p>
+    <p><i class="fas fa-user fa-fw w3-xlarge w3-center"></i> USER NickName: {{my.myNickname}}</p>
     <br/>
-        <p><i class="fas fa-envelope fa-fw w3-xlarge w3-center"></i> Email: </p>
+    <p><i class="fas fa-envelope fa-fw w3-xlarge w3-center"></i> Email: {{my.myUserEmail}} </p>
+    <br/>
+    <p><i class="fas fa-comment-alt fa-fw w3-xlarge w3-center"></i> Content: {{my.myContent}} </p>
+    <br/>
+    <p><i class="fas fa-phone fa-fw w3-xlarge w3-center"></i> PhoneNum: {{my.myPhoneNum}} </p>
+    <br/>
     </div>
-
-    <div class="input-group mb-3" style="margin-bottom:40px; margin-top:40px;margin-left:auto; margin-right:auto; width:500px;">
-    <div class="custom-file">
-        <input type="file" class="custom-file-input" id="inputGroupFile02"/>
-        <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
-    </div>
-    <p>
-            <button class="btn btn-primary" style="float: right; font-weight:100; font-size: 1rem;" type="submit">
-            upload
-            </button>
-        </p>
-    </div>
+    {% include "modifymodalMypage.html" %}
+    
     </div>
         
 </div>
+
+
+
+{% endwith %}
 {% else %}
 <div class="w3-container" style="padding:80px 16px" id="contact">
     <h3 class="w3-center" style="margin-top:-30px;">MY PAGE</h3>

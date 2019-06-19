@@ -1,0 +1,46 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-sm text-align:center" style="margin-right:5px;" data-toggle="modal" data-target="#modifyModalMypage{{my._id}}">
+modify
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modifyModalMypage{{my._id}}" tabindex="-1" role="dialog" aria-labelledby="modifyModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="modifyModalLabel">Modify Mypage</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form action="/mypage/update" method="POST" enctype = "multipart/form-data">
+          <div class="form-group">
+            <label for="myNickname" class="mr-auto">Nickname</label>
+            <input type="text" name="myNickname" class="form-control" id="myNickname" placeholder="Enter Nickname." >
+          </div>
+          <div class="form-group">
+            <label for="myPhoneNum" class="mr-auto">PhoneNum</label>
+            <input type="text" name="myPhoneNum" class="form-control" id="myPhoneNum" placeholder="Enter PhoneNum." >
+          </div>
+          <div class="form-group">
+            <label for="myContent">Content</label>
+            <textarea rows="10" name="myContent" class="form-control" id="myContent" placeholder="Enter Content."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="myImagepath">Portfolio Image</label>
+            <input type="file" rows="10" name="myImagepath" class="form-control" id="myImagepath" placeholder="Enter Image.">
+         </div>
+      </div>
+
+      <input type="hidden" name="obj_id" value="{{my._id}}">
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        </form>       
+      </div>
+    </div>
+  </div>
+</div>
