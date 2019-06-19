@@ -1,6 +1,7 @@
 from flask import Blueprint, flash, session, render_template, jsonify, request, redirect, url_for
 from .db import connect_mongo, portsDAO, commentsDAO
 import time
+from werkzeug.utils import secure_filename
 
 db_connection = connect_mongo.ConnectDB().db
 ports = portsDAO.Ports(db_connection)
@@ -73,6 +74,8 @@ def portCreate():
 	if request.method == "POST":
 		if "userEmail" in session:
 			if "admin@admin" in session["userEmail"]:
+				f = request.files['portImage']
+				f.save("./static/img/" + secure_filename(f.filename))
 				find = list(ports.getAllports())
 				if not find:
 					index = 1

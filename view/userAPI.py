@@ -22,6 +22,15 @@ def signup():
 				return redirect(url_for('userAPI.signup'))		
 		return render_template('welcome.html', info = session['userEmail'])
 @userAPI.route('/')
+def home():
+	if 'userEmail' in session:
+		return render_template("Mypage.html", info = session["userEmail"])
+
+	else:
+		return render_template("Mypage.html")
+
+
+
 @userAPI.route('/login', methods=['GET', 'POST'])
 def login():
 	if request.method == 'GET':
@@ -39,7 +48,7 @@ def login():
 				#return render_template('portfolio.html', info= session['userEmail'])
 				return redirect(url_for('portAPI.port'))
 			else:
-				flash('Wrong ID or PW, You have to check your ID or PW')
+				flash('Wrong ID or PW, You have to check your ID or PW', 'error')
 				return redirect(url_for('userAPI.login'))
 @userAPI.route('/logout')
 def logout():
