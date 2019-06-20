@@ -16,7 +16,7 @@ modify
       </div>
 
       <div class="modal-body">
-        <form action="/port/update" method="POST">
+        <form action="/port/update" method="POST" enctype = "multipart/form-data">
           <div class="form-group">
             <label for="portTitle" class="mr-auto">Title</label>
             <input type="text" name="portTitle" class="form-control" id="portTitle" placeholder="Enter Title." value="{{port.portTitle}}">
@@ -25,6 +25,10 @@ modify
             <label for="portContent">Content</label>
             <textarea rows="10" name="portContent" class="form-control" id="portContent" placeholder="Enter Content.">{{port.portContent}}</textarea>
           </div>
+          <div class="form-group">
+            <label for="portImagepath">Portfolio Image</label>
+            <input type="file" rows="10" name="portImagepath" class="form-control" id="portImagepath" placeholder="Enter Image.">
+         </div>
       </div>
 
       <input type="hidden" name="obj_id" value="{{port._id}}">

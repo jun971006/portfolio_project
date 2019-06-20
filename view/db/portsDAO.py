@@ -23,7 +23,7 @@ class Ports():
 	def portUpdate(self,portDict):
 		self.ports.find_and_modify(
 			{"_id": ObjectId(portDict["obj_id"])},
-			{"$set":{"portTitle":portDict["portTitle"],"portContent":portDict["portContent"]}},
+			{"$set":{"portTitle":portDict["portTitle"],"portContent":portDict["portContent"], "imagepath":portDict["imagepath"]}},
 			upsert=False
 			)
 		return True

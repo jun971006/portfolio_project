@@ -105,8 +105,17 @@ def portCreate():
 def portUpdate():
 	if "userEmail" in session:
 		if "admin@admin" in session["userEmail"]:
-			print(request.form.to_dict(flat=True)["obj_id"])
-			ports.portUpdate(request.form.to_dict(flat=True))
+			f = request.files['portImagepath']
+			if f:
+				f.save("./static/img/" + secure_filename(f.filename))
+				image = secure_filename(f.filename)
+				print(image)
+				iimagepath = "../../static/img/" + image
+				print(iimagepath)
+				print(request.form.to_dict(flat=True)["obj_id"])
+				ports.portUpdate(dict_merge({"imagepath":iimagepath}, request.form.to_dict(flat=True)))
+			else:
+				ports.portUpdate(request.form.to_dict(flat=True))
 			return redirect(url_for('portAPI.port'))
 		else:
 			flash('You have to admin logged in')
