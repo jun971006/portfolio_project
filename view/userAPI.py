@@ -1,8 +1,9 @@
 from flask import Blueprint, request, render_template, session, redirect, url_for, flash
-from .db import connect_mongo, usersDAO
+from .db import connect_mongo, usersDAO, mypagesDAO
 
 db_connection = connect_mongo.ConnectDB().db
 users = usersDAO.Users(db_connection)
+mypages = mypagesDAO.Mypages(db_connection)
 
 userAPI = Blueprint('userAPI', __name__, template_folder='templates')
 
@@ -15,6 +16,7 @@ def signup():
 	elif request.method == 'POST':
 		if not 'userEmail' in session:
 			if users.userCreate(request.form.to_dict(flat='true')):
+				mypages.mypageCreate(request.form.to_dict(flat='true')['userEmail'])
 				session['userEmail'] = request.form['userEmail']
 				return render_template('welcome.html', info = session['userEmail'])
 			else:
@@ -23,13 +25,7 @@ def signup():
 		return render_template('welcome.html', info = session['userEmail'])
 @userAPI.route('/')
 def home():
-	if 'userEmail' in session:
-		return render_template("Mypage.html", info = session["userEmail"])
-
-	else:
-		return redirect(url_for("portAPI.port"))
-
-
+	return redirect(url_for("portAPI.port"))
 
 @userAPI.route('/login', methods=['GET', 'POST'])
 def login():
@@ -58,6 +54,8 @@ def logout():
 	else:
 		flash('You have to logged in')
 		return redirect(url_for('userAPI.login'))
+
+
 
 #if __name__ =='__main__':
 #	userAPI.run(host = '0.0.0.0', port = 5000)
