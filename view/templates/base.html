@@ -34,8 +34,14 @@
 
       {% if not "userEmail" in session %}
         {% include "navNotuser.html" %}
+
       {% else %}
-        {% include "navUser.html" %}
+        {% if session["userEmail"] == "admin@admin" %}
+          {% include "navAdmin.html" %}
+        {% else %}
+          {% include "navUser.html" %}  
+        {% endif %}
+        
       {% endif %}
 
 

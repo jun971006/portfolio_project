@@ -91,39 +91,41 @@ hr.new5 {
 
 <hr class = "new5">
 
-<div class = "container-fluid">
-	{% with comments=comments %}
-		{% include "tweet.html" %}
-	{% endwith %}
-	<div class = "row">
+<div class = "container-fluid float-center" >
+	<div class = "row float-center"style="float:center;margin-right: auto; margin-left: auto">
 		 <!--댓글창-->
-		 <div class="col-md-4">
-			<h3>tweet</h3>
-			<p class="text-muted"> What do you want to say?</p>
+		 <div class="col-md-4 "style="margin-right: auto; margin-left: auto">
+			<!-- <h3>tweet</h3>
+			<p class="text-muted"> What do you want to say?</p> -->
 			<form action="/comment/create" method="POST">
 				<div class="form-group">
-					<label for="commentTitle">Title</label>
+					<!-- <label for="commentTitle">Title</label> -->
 					{% if info %}
 					<input type="hidden" name="commentAuthor" class="form-control" id="form-control" value={{info}}>
 					{% endif %}
 					<input type="hidden" name="commentIndex" class="form-control" id="commentIndex" value={{more.index}}>
-					<input type="text" name="commentTitle" class="form-control" id="commentTitle" placeholder="Enter title.">
+					<!-- <input type="text" name="commentTitle" class="form-control" id="commentTitle" placeholder="Enter title."> -->
 				</div>
 				<div class="form-group">
-					<label for="commentContent">Content</label>
-					<textarea rows="3" name="commentContent" class="form-control" id="commentContent" placeholder="Enter Content."></textarea>
+					<label for="commentContent">Tweet</label>
+					<textarea rows="2" name="commentContent" class="form-control" id="commentContent" placeholder="Enter Content."></textarea>
 				</div>
-				{% if not info %}
+				
 				<div class="form-group">
+					{% if not info %}
 					<label for="commentPW">Password</label>
-					<input type="text" name="commentPW" class="form-group" id="commentPW" placeholder="Enter Password">
+					<input type="text" name="commentPW" class="form-group" id="commentPW" placeholder="Enter Password" required >
+					{% endif %}
 				</div>
-				{% endif %}
-				<button type="submit" class="btn btn-primary float-right">tweet</button>
+				
+				<button type="submit" class="btn btn-primary" style="float:right;">tweet</button>
 			</form>
 		</div>
 		<a style="display:scroll;position:fixed;bottom:10px;right:10px;" href="#" title="맨 위로"><button type="button" class="btn btn-info">TOP</button></a> 
 	</div>
+	{% with comments=comments %}
+		{% include "tweet.html" %}
+	{% endwith %}
 </div>
 {% endwith %}
 {% endblock content %}

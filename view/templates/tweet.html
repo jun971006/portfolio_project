@@ -1,14 +1,14 @@
 {% for tweet in comments %}
-<div class="card" style="margin-bottom:30px">
+<div class="card" style="margin-bottom:5px; margin-top:5px; width:900px; margin-right:auto;margin-left:auto; float:center;">
+	<!-- style="width: 18rem; margin:0.7rem; max-height: 750px; width: 300px; margin-top: : 1rem; margin-right:10px;margin-left:10px; text-align:center; float:left;" -->
 	<div class="card-body">
-		<blockquote class="blockquote">
-			<h5 class="card-title mb-0">{{tweet.commentTitle}}</h5>
-			<footer class="blockquote-footer">{{tweet.commentDate}}<cite title="Source Title"></cite></footer>
-		</blockquote>
 		<p class="card-text">{{tweet.commentContent}}</p>
 		{% if tweet.commentAuthor %}
 			<p class="card-text">Author : {{tweet.commentAuthor}}</p>
 		{% endif %}
+		<blockquote class="blockquote">
+			<footer class="blockquote-footer" style="font-size: 10px">{{tweet.commentDate}}<cite title="Source Title"></cite></footer>
+		</blockquote>
 		{% if info %}
 			{% if info == "admin@admin" %}
 				{% include "removemodalComment.html" %}{% include "modifymodalComment.html" %}

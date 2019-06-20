@@ -23,7 +23,7 @@ class Comments():
 	def commentUpdate(self,commentDict):
 		self.comments.find_and_modify(
 			{"_id": ObjectId(commentDict["obj_id"])},
-			{"$set":{"commentTitle":commentDict["commentTitle"],"commentContent":commentDict["commentContent"]}},
+			{"$set":{"commentContent":commentDict["commentContent"]}},
 			upsert=False
 			)
 		return True

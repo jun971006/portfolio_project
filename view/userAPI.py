@@ -31,12 +31,12 @@ def home():
 def login():
 	if request.method == 'GET':
 		if 'userEmail' in session:
-			return render_template('welcome.html', info = session['userEmail'])
+			return redirect(url_for('portAPI.port'))
 			# return render_template('portfolio.html')
 		return render_template('login.html')
 	elif request.method == 'POST':
 		if 'userEmail' in session:
-			return render_template('welcome.html', info=session['userEmail'])
+			return redirect(url_for('portAPI.port'))
 		else:
 			if users.userAuthentication(request.form.to_dict(flat='true')):
 				session['userEmail'] = request.form['userEmail']				
