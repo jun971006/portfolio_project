@@ -1,20 +1,37 @@
 {% extends "base.html" %}
 {% block content %}
 {% with more=port %}
+
+
+<!--
 <div class="jumbotron text-center" style ="margin-bottom:0">
 	<h1> {{more.portTitle}} </h1>
 	<h5> {{more.portDate}} </h5>
 </div>
-<div class ="container-fluid">
-	<div class = "row center-block">
-		<img src={{more.imagepath}} class="img-resposive rounded img-fluid mx-auto d-block" alt ="">  
-	</div>
+-->
+<style>
+body {
+    font-family: 'Archivo Black';font-size: 22px;
+}
+</style>
+<div class ="container-fluid bg">
 	<div class = "row">
-		<p class = "text-break">{{more.portContent}}</p><br/>
-	</div>	
-	<div class = "row">
-	<p class = "text-break">{{more.index}}</p>
+		<div class ="column">
+			<img src={{more.imagepath}} class="responsive" alt =""> 
+		</div>
+		<div class ="column">
+			<h1> {{more.portTitle}} </h1>
+			<h5> {{more.portDate}} </h5>
+			<p class = "text-break">{{more.portContent}}</p><br/>
+			<p class = "text-break">{{more.index}}</p>
+		</div>
 	</div>
+
+
+
+
+
+
 	{% with comments=comments %}
 		{% include "tweet.html" %}
 	{% endwith %}
@@ -45,7 +62,7 @@
 				<button type="submit" class="btn btn-primary float-right">tweet</button>
 			</form>
 		</div>
-		<a style="display:scroll;position:fixed;bottom:10px;right:10px;" href="#" title="맨 위로">맨 위로 </a> 
+		<a style="display:scroll;position:fixed;bottom:10px;right:10px;" href="#" title="맨 위로"><button type="button" class="btn btn-info">TOP</button></a> 
 	</div>
 </div>
 {% endwith %}
