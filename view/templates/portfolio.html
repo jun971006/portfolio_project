@@ -1,12 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 <!-- <div style="display:block; margin-right: :auto; margin-left:auto; max-width: :1400px, padding-top:70px"> -->
+<style >
+
+.xlarge-font {
+  font-size: 64px
+}
+</style>
+<div class="text-center">
+	<h1 class="xlarge-font"><b>MY PORTFOLIO</b></h1>
+
+</div>
+
 <div style="display:table;margin-right:auto; margin-left:auto; max-width:1400px; padding-top:70px">
 {% for port in port_all %}
 	<div class="card shadow-lg" style="width: 18rem; margin:0.7rem; max-height: 750px; width: 300px; margin-top: : 1rem; margin-right:10px;margin-left:10px; text-align:center; float:left;" >
 	  <a href="/port/{{port.index}}"><img src={{port.imagepath}} class="card-img-top  img-thumbnail" alt="..."></a>
 	  <div class="card-body">
-	    <h1 class="card-title">Title : {{port.portTitle}}</h5>
+	    <h1 class="card-title"> {{port.portTitle}}</h5>
 	    
 	    
 	    <blockquote class="blockquote">

@@ -48,22 +48,7 @@ body {
 .xlarge-font {
   font-size: 64px
 }
- img {
-  display: block;
-  height: auto;
-  max-width: 100%;
-}
 
-@media screen and (max-width: 1000px) {
-  .column-66,
-  .column-33 {
-    width: 100%;
-    text-align: center;
-  }
-  img {
-    margin: auto;
-  }
-}
 hr.new4 {
   border: 1px solid black;
 }
@@ -71,6 +56,15 @@ hr.new5 {
   border: 10px solid black;
   border-radius: 5px;
 }
+
+.image-container{
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 500px;
+            height: 500px;
+        }
 </style>
 
 <div class ="container">
@@ -85,9 +79,10 @@ hr.new5 {
 			<h5> {{more.portDate}} </h5>
 		</div>
 		<div class ="column-33">
-			<div class = "selector">
-				<img src={{more.imagepath}} class="" alt ="" width="335" height="471"> 
-			</div>
+			<div class = "image-container">
+				<img src={{more.imagepath}}  alt =""  width= "500"
+            height = "471" class ="rounded"  style = "border:10px solid black">
+			</div> 
 		</div>
 	</div>
 	
