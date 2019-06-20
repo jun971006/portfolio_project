@@ -12,17 +12,18 @@ def signup():
 	if request.method == 'GET':
 		if not 'userEmail' in session:
 			return render_template('signup.html')
-		return render_template('welcome.html', info = session['userEmail'])
+		# return render_template('welcome.html', info = session['userEmail'])
+		return redirect(url_for('portAPI.port'))
 	elif request.method == 'POST':
 		if not 'userEmail' in session:
 			if users.userCreate(request.form.to_dict(flat='true')):
 				mypages.mypageCreate(request.form.to_dict(flat='true')['userEmail'])
 				session['userEmail'] = request.form['userEmail']
-				return render_template('welcome.html', info = session['userEmail'])
+				return redirect(url_for('mypageAPI.mypage'))
 			else:
 				flash('Email is already Exists, try again with other Email.')
 				return redirect(url_for('userAPI.signup'))		
-		return render_template('welcome.html', info = session['userEmail'])
+		return redirect(url_for('mypageAPI.mypage'))
 @userAPI.route('/')
 def home():
 	return redirect(url_for("portAPI.port"))

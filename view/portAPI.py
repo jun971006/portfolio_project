@@ -12,37 +12,17 @@ portAPI = Blueprint('portAPI', __name__, template_folder='templates')
 def dict_merge(x, y):
 	return {**x, **y}
 
-# @portAPI.route('/port', methods=["GET", "POST"])
 @portAPI.route('/port')
 def port():
-	# if request.method == "GET":
-	# 	# if "userEmail" in session:
 	port_all = ports.getAllports()
 	if "userEmail" in session:
 		return render_template("portfolio.html", info=session["userEmail"], port_all=port_all)
 	else:
 		return render_template("portfolio.html", port_all=port_all)
-	# 	# else:
-	# 	# 	flash('You have to login first!')
-	# 	# 	return redirect(url_for('userAPI.login'))
-
-	# if request.method == "POST":
-	# 	if "userEmail" in session:
-	# 		if "admin" in session["userEmail"]:
-	# 			now = time.strftime("%Y-%m-%d %H:%M")
-	# 			obj_id = ports.portCreate(dict_merge({"portAuthor":session["userEmail"],"portDate":now}, request.form.to_dict(flat="true")))
-	# 			return redirect(url_for('portAPI.port'))
-	# 		else:
-	# 			flash('You have to login first!')
-	# 			return redirect(url_for('userAPI.login'))	
-	# 	else:
-	# 		flash('Yo	u have to login first!')
-	# 		return redirect(url_for('userAPI.login'))
 
 
 @portAPI.route('/port/<int:index>',  methods=["GET", "POST"])
 def portView(index):
-	# if request.method == "GET":
 	if "userEmail" in session:
 		comment_all = comments.getAllcomments(index)
 		result = ports.findOnePort(index)
@@ -54,8 +34,6 @@ def portView(index):
 		result = ports.findOnePort(index)
 		print(comment_all)
 		return render_template("readMore.html", Index=index, port=result, comments=comment_all)
-
-
 
 @portAPI.route("/port/create", methods=["GET", "POST"])
 def portCreate():
@@ -136,8 +114,4 @@ def portRemove():
 	else:
 			flash('You have to admin logged in')
 			return redirect(url_for('userAPI.login'))
-
-# TODO : portsDAO에서 특정 id값 portfolio가져올 api 구현해야함... 이걸 db _id로 사용할지 따로 indexing할지 생각...
-# @portAPI.route("/port/:id", methods=["GET", "POST"])
-# def portView():
-# 	
+ 	

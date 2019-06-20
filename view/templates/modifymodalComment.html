@@ -18,10 +18,6 @@ modify
       <div class="modal-body">
         <form action="/comment/update" method="POST">
           <div class="form-group">
-            <label for="commentTitle" class="mr-auto">Title</label>
-            <input type="text" name="commentTitle" class="form-control" id="commentTitle" placeholder="Enter title." value="{{tweet.commentTitle}}">
-          </div>
-          <div class="form-group">
             <label for="commentContent">Content</label>
             <textarea rows="10" name="commentContent" class="form-control" id="commentContent" placeholder="Enter Content.">{{tweet.commentContent}}</textarea>
           </div>

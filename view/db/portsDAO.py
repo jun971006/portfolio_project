@@ -38,7 +38,6 @@ class Ports():
 	# port 디비에서 특정 id한개에 해당하는 portfolio만 가져온다.
 	def findOnePort(self, Index):
 		try:
-			# result = self.ports.find({}).sort({"_id:-1"}).limit(1)
 			result = self.ports.find_one({"index" : Index})
 			return result
 		except:
