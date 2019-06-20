@@ -1,6 +1,5 @@
 {% for tweet in comments %}
 <div class="card" style="margin-bottom:5px; margin-top:5px; width:900px; margin-right:auto;margin-left:auto; float:center;">
-	<!-- style="width: 18rem; margin:0.7rem; max-height: 750px; width: 300px; margin-top: : 1rem; margin-right:10px;margin-left:10px; text-align:center; float:left;" -->
 	<div class="card-body">
 		<p class="card-text">{{tweet.commentContent}}</p>
 		{% if tweet.commentAuthor %}
@@ -19,7 +18,9 @@
 			
 			{% endif %}
 		{% else %}
+			{% if not tweet.commentAuthor %}
 				{% include "removemodalComment.html" %}{% include "modifymodalComment.html" %}	
+			{% endif %}
 		{% endif %}
 	</div>
 </div>

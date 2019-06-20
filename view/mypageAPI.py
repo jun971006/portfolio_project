@@ -31,9 +31,6 @@ def mypageUpdate():
 		print(imagepath)
 		mypages.mypageUpdate(dict_merge({"myImagepath":imagepath} ,request.form.to_dict(flat=True)))
 		return redirect(url_for('mypageAPI.mypage'))
-		# else:
-		# 	flash('You have to admin logged in')
-			# return redirect(url_for('userAPI.login'))
 	else:
 		flash('You have to logged in first')
 		return redirect(url_for('userAPI.login'))
