@@ -4,6 +4,7 @@ from view.userAPI import userAPI
 from view.postAPI import postAPI
 from view.portAPI import portAPI
 from view.commentAPI import commentAPI
+from view.mypageAPI import mypageAPI
 import json
 
 app = Flask(__name__)
@@ -11,6 +12,7 @@ app.register_blueprint(userAPI)
 app.register_blueprint(postAPI)
 app.register_blueprint(portAPI)
 app.register_blueprint(commentAPI)
+app.register_blueprint(mypageAPI)
 
 with open("secret_key.json")as Json:
 	app.secret_key = json.loads(Json.read())["secret"]
